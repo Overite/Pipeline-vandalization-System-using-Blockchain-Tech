@@ -14,8 +14,8 @@ There are four basic feature Squad Units of this project, namely:
 |**Backend Development**| *Handles the server-side of applications, managing databases, server logic, and ensuring smooth communication between the server and the frontend.* |
 |**Embedded Systems & Hardware**| *Designs, develops, and integrates hardware components and software systems, creating specialized computing systems tailored for specific tasks or functions, in this case, to monitor and track the safe and secure flow of PMS in pipelines and tankers in realtime.* |
 
-This arm of this project is set to cover the frontend and backend development systems
-
+This then categorizes these squad units into two main components,
+- **Software Components** ~ focusing on developing systems and interfaces to run logic, database retrieval and information architectural designs.
 
 # line to the UI/UX file: https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1
 # line to the user flow : https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 
