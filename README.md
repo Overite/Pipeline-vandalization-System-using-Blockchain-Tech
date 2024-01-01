@@ -1,7 +1,7 @@
 ![Overrite](./overitelogo.jpg)
 
-# OVERITE
-## Pipeline vandalization System using Blockchain Technology
+# OVERITE 🌌 - Pipeline vandalization System using Blockchain Technology
+## Introduction 🐎
 
 This project aims to leverage Blockchain technology to safeguard pipelines from acts of vandalism. By employing Blockchain's secure and decentralized framework, the system intends to create a tamper-resistant method to monitor, track, and prevent unauthorized access or damage to pipelines. Through this initiative, the project endeavors to enhance the security and integrity of vital infrastructure while minimizing the risks associated with potential sabotage.
 
