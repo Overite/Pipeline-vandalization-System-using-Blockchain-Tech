@@ -20,9 +20,7 @@ This then categorizes these squad units into two main components,
 
 Below are the Links to the UI Design and User Flow respectively for this project:
 
-[![User Design](./icons/icons8-figma-40%20(1).png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1) [![User Flow](./icons/icons8-figma-40.png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 )
+[![User Design](./icons/icons8-figma-40%20(1).png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1)(##) [![User Flow](./icons/icons8-figma-40.png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 )
 
-# line to the UI/UX file: https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1
-# line to the user flow : https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 
 # fonts be use "Nexa font, Petrov Sans, Lato, lora, NOTE: team leads should pick the forn to use 
 # Back end developers should work on a localhost database 
