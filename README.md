@@ -18,9 +18,13 @@ This then categorizes these squad units into two main components,
 - **Software Component** ~ focusing on developing systems and interfaces to run logic, database retrieval and information architectural designs.
 - **Hardware Component** ~ focusing on designing and integrating hardware components for tasks relating to tracking and monitoring flow in pipelines and tanker location.
 
+## User Design & Flows for User Interface & Experience ✨ 
 Below are the Links to the UI Design and User Flow respectively for this project:
 
-[![User Design](./icons/icons8-figma-40%20(1).png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1)(##) [![User Flow](./icons/icons8-figma-40.png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 )
+[![User Design](./icons/icons8-figma-40%20(1).png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1) [![User Flow](./icons/icons8-figma-40.png)](https://www.figma.com/file/01Q5aK5vqgHaMOoN4UWgRr/Special-app?type=design&node-id=189%3A229&mode=design&t=dSQ4A03mTUxff5hX-1 )
 
-# fonts be use "Nexa font, Petrov Sans, Lato, lora, NOTE: team leads should pick the forn to use 
-# Back end developers should work on a localhost database 
+> Note: Fonts be used are **Nexa font**, **Petrov Sans**, **Lato**, **Lora**; Hence, team leads should pick the fonts to use 
+
+> Backend Developers should work on a localhost database for test simulations and dummy data
+
+## How It Works ⚙
