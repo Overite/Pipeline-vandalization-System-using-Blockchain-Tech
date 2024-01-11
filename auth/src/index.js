@@ -3,9 +3,9 @@ const bcrypt = require("bcrypt");
 const prisma = require("@prisma/client");
 const dotenv = require("dotenv");
 
-const registerRoute = require("../routes/registerRoute.js");
+const registerRoute = require("./routes/registerRoute.js");
 
-const login = require("../controllers/loginController.js")
+const login = require("./controllers/loginController.js")
 
 const app = express();
 app.use(express.json());

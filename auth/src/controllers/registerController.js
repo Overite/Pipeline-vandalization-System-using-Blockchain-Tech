@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const existingUser = require("../controllers/registerController.js");
+const existingUser = require("./registerController.js");
 
 const {PrismaClient} = require("@prisma/client");
 const prisma = new PrismaClient();
