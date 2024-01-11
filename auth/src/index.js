@@ -4,7 +4,8 @@ const prisma = require("@prisma/client");
 const dotenv = require("dotenv");
 
 const registerRoute = require("../routes/registerRoute.js");
-const loginRoute = require("../routes/loginRoute.js")
+
+const login = require("../controllers/loginController.js")
 
 const app = express();
 app.use(express.json());
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/register', registerRoute);
-app.use('/login', loginRoute);
+app.use('/login', login);
 
 
 const start = async() => {
