@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 // Register User
 router.post('/', async (req, res) => {
-    const {email, password} = req.body;
+    const { firstname, lastname, email, password, contact, region, bio } = req.body;
 
     try{
         const existingUser = await prisma.user.findUnique({
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
             })
         }
         else{
-            const newUser = await register(email, password);
+            const newUser = await register(firstname, lastname, email, password, contact, region, bio);
             res.status(201).json({
                 status: '201', 
                 message: 'Registered Successfully',

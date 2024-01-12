@@ -12,11 +12,11 @@ router.post('/', async (req, res) => {
     const { email, password } = req.body;
 
     try{
-        const user = await prisma.user.findUnique({
+        const userEmail = await prisma.user.findUnique({
             where: {email}
         });
 
-        if(!user){
+        if(!userEmail){
             res.status(401).json({
                 status: "401",
                 message: "Incorrect Email or Password"
