@@ -4,7 +4,8 @@
   "description": "This is the Authenticaton Feature for the pipeline vandalization system, basic registration and login",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon src/index.js"
+    "start": "node src/index.js",
+    "dev_start": "npx nodemon src/index.js"
   },
   "keywords": [],
   "author": "Daniel Benson",
