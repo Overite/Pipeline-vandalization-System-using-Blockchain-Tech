@@ -13,9 +13,10 @@ There are four basic feature Squad Units of this project, namely:
 |**Frontend Development**| *Responsible for building the client-side of websites or applications, translating designs into functional and interactive user interfaces using languages like HTML, CSS, and JavaScript.* |
 |**Backend Development**| *Handles the server-side of applications, managing databases, server logic, and ensuring smooth communication between the server and the frontend.* |
 |**Embedded Systems & Hardware**| *Designs, develops, and integrates hardware components and software systems, creating specialized computing systems tailored for specific tasks or functions, in this case, to monitor and track the safe and secure flow of PMS in pipelines and tankers in realtime.* |
+|**BlockChain Development**| *Handles the software data security based on it immutablity and it's decentralized framwork.* |
 
 This then categorizes these squad units into two main components,
-- **Software Component** ~ focusing on developing systems and interfaces to run logic, database retrieval and information architectural designs.
+- **Software Component** ~ focusing on developing systems and interfaces to run logic, database retrieval and information architectural designs and the bloackchain.
 - **Hardware Component** ~ focusing on designing and integrating hardware components for tasks relating to tracking and monitoring flow in pipelines and tanker location.
 
 > *NOTE: Backend Developers should work on a localhost database for test simulations and dummy data.*
