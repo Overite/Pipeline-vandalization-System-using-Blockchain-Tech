@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model pip_lines {
+  id        Int      @id @default(autoincrement())
+  pi_id     Int
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  pms_level String   @db.VarChar(100)
+  timestamp DateTime @default(now()) @db.Timestamp(0)
+
+  @@map("pip-lines")
+}
+
+model tanker2137 {
+  id        Int      @id @default(autoincrement())
+  sn        Int
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  speed     Int
+  pms_level Float    @db.Float
+  Timestamp DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tanker2138 {
+  id        Int      @id @default(autoincrement())
+  sn        Int
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  speed     Int
+  pms_level Float    @db.Float
+  Timestamp DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tanker2139 {
+  id        Int      @id @default(autoincrement())
+  sn        Int
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  speed     Int
+  pms_level Float    @db.Float
+  Timestamp DateTime @default(now()) @db.Timestamp(0)
+}
+
+model tanker2140 {
+  id        Int      @id @default(autoincrement())
+  sn        Int
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  speed     Int
+  pms_level Float    @db.Float
+  Timestamp DateTime @default(now()) @db.Timestamp(0)
+}
