@@ -16,16 +16,12 @@ model pip_lines {
   flowrate  String   @db.VarChar(255)
   vibration String   @db.VarChar(255)
   timestamp DateTime @default(now()) @db.Timestamp(0)
-
-  @@map("pip-lines")
 }
 
 model pipe_lines {
   id        Int      @id
   sn        Int
   timestamp DateTime @default(now()) @db.Timestamp(0)
-
-  @@map("pipe-lines")
 }
 
 model tanker2137 {
