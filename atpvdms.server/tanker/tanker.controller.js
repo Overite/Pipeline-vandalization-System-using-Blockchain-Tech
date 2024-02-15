@@ -15,13 +15,13 @@ const get_all_tankers = esh(async (req, res) => {
 })
 
 const get_tanker_logs = esh(async (req, res) => {
-    const { tanker_sin } = req.params;
+    const { tanker_sn } = req.params;
 
     try {
-        const tanker = await prisma[`tanker${tanker_sin}`].findMany({});
+        const tanker = await prisma[`tanker${tanker_sn}`].findMany({});
 
-        if (tanker) status_msg({ code: 200, msg: `Got tanker: ${tanker_sin}`, res, tanker });
-        else status_msg({ code: 400, msg: `Error in getting tanker: ${tanker_sin} logs. Check internet connection.`, res })
+        if (tanker) status_msg({ code: 200, msg: `Got tanker: ${tanker_sn}`, res, tanker });
+        else status_msg({ code: 400, msg: `Error in getting tanker: ${tanker_sn} logs. Check internet connection.`, res })
     } catch (error) {
         server_err({ error, res })
     }

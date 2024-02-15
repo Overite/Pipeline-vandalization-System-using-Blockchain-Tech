@@ -7,7 +7,7 @@ const tanker_route = Router();
 tanker_route.get('/all', get_all_tankers)
 
 // Get tanker logs
-tanker_route.get('/:tanker_sin', get_tanker_logs)
+tanker_route.get('/:tanker_sn', get_tanker_logs)
 
 
 export { tanker_route }
