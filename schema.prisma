@@ -10,22 +10,12 @@ datasource db {
 model pip_lines {
   id        Int      @id @default(autoincrement())
   pi_id     Int
-  latitude  Float    @db.Float
-  longitude Float    @db.Float
-  velocity  String   @db.VarChar(100)
-  flowrate  String   @db.VarChar(255)
-  vibration String   @db.VarChar(255)
+  lat       Float    @db.Float
+  lng       Float    @db.Float
+  pms_level String   @db.VarChar(100)
   timestamp DateTime @default(now()) @db.Timestamp(0)
 
   @@map("pip-lines")
-}
-
-model pipe_lines {
-  id        Int      @id
-  sn        Int
-  timestamp DateTime @default(now()) @db.Timestamp(0)
-
-  @@map("pipe-lines")
 }
 
 model tanker2137 {
@@ -66,10 +56,4 @@ model tanker2140 {
   speed     Int
   pms_level Float    @db.Float
   Timestamp DateTime @default(now()) @db.Timestamp(0)
-}
-
-model tankers {
-  id        Int      @id @default(autoincrement())
-  sn        String   @db.VarChar(100)
-  timestamp DateTime @default(now()) @db.Timestamp(0)
 }
