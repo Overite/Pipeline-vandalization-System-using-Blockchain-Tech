@@ -27,4 +27,27 @@ const get_tanker_logs = esh(async (req, res) => {
     }
 })
 
-export { get_all_tankers, get_tanker_logs }
+const check_tanker_level = esh(async (req, res) => {
+    const { tanker_sn } = req.params;
+
+    try {
+        const tanker_logs = await prisma[`tanker${tanker_sn}`].findMany({});
+        let tanker_latest_pms_level;
+
+        tanker_logs.reduce((smallest_pms_level, log) => {
+            if (smallest_pms_level === undefined || log.pms_level < smallest_pms_level) {
+                tanker_latest_pms_level = log.pms_level;
+                return log.pms_level; // Return the smallest pms_level found so far
+            } else {
+                return smallest_pms_level; // Continue with the current smallest_pms_level
+            }
+        }, undefined); // Set initial value as undefined
+
+        if (tanker_latest_pms_level) status_msg({ code: 200, msg: `Tanker-${tanker_sn} pms level reduced to ${tanker_latest_pms_level}!`, res, pms_level: tanker_latest_pms_level })
+        status_msg({ code: 400, msg: 'Error in getting tanker pms level! Check internet connection', res })
+    } catch (error) {
+        server_err({ error, res })
+    }
+})
+
+export { get_all_tankers, get_tanker_logs, check_tanker_level }

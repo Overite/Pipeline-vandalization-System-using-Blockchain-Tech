@@ -7,17 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model pip_lines {
-  id        Int      @id @default(autoincrement())
-  pi_id     Int
-  latitude  Float    @db.Float
-  longitude Float    @db.Float
-  velocity  String   @db.VarChar(100)
-  flowrate  String   @db.VarChar(255)
-  vibration String   @db.VarChar(255)
-  timestamp DateTime @default(now()) @db.Timestamp(0)
-}
-
 model pipe_lines {
   id        Int      @id
   sn        Int
@@ -65,7 +54,38 @@ model tanker2140 {
 }
 
 model tankers {
+  id          Int      @id @default(autoincrement())
+  sn          String   @db.VarChar(100)
+  origin      String   @db.VarChar(255)
+  destination String   @db.VarChar(255)
+  timestamp   DateTime @default(now()) @db.Timestamp(0)
+}
+
+model admin {
+  id                Int         @id @default(autoincrement())
+  user_name         String?     @unique(map: "user_name") @db.VarChar(50)
+  password          String?     @db.VarChar(255)
+  email             String?     @unique(map: "email") @db.VarChar(100)
+  full_name         String?     @db.VarChar(100)
+  registration_date DateTime?   @default(now()) @db.Timestamp(0)
+  last_login        DateTime?   @db.Timestamp(0)
+  active            Boolean?    @default(true)
+  role              admin_role?
+  admin_number      Int
+}
+
+model pipe_line2137 {
   id        Int      @id @default(autoincrement())
-  sn        String   @db.VarChar(100)
+  pi_id     Int
+  latitude  Float    @db.Float
+  longitude Float    @db.Float
+  velocity  String   @db.VarChar(100)
+  flowrate  String   @db.VarChar(255)
+  vibration String   @db.VarChar(255)
   timestamp DateTime @default(now()) @db.Timestamp(0)
+}
+
+enum admin_role {
+  ADMIN
+  USER
 }
