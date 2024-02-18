@@ -4,6 +4,12 @@ import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import { send_mail } from "../utils/mail.js";
 
+const httpOnly = process.env.MODE == 'DEVELOPMENT' ? true : false;
+const secure = process.env.MODE == 'DEVELOPMENT' ? true : false;
+const sameSite = process.env.MODE == 'DEVELOPMENT' ? 'strict' : 'none';
+const path = '/';
+
+
 
 const signup = esh(async (req, res) => {
     const { password, full_name, email } = req.body;
@@ -28,7 +34,8 @@ const signup = esh(async (req, res) => {
                 data: {
                     email,
                     full_name,
-                    password: hashed_password,
+                    // password: hashed_password,
+                    password,
                     active: false,
                     role: 'ADMIN',
                     user_name: full_name,
@@ -56,19 +63,34 @@ const signup = esh(async (req, res) => {
 })
 
 const signin = esh(async (req, res) => {
-    const { email, password, admin_number } = req.body;
+    const { pass_phrase, password, remember_me } = req.body;
 
+    function hasLetter(str) {
+        const letterRegex = /[a-zA-Z]/;
+        return letterRegex.test(str);
+    }
+
+    let admin;
     try {
-        const admin = await prisma.admin.findUnique({
-            where: { email }
-        });
-        // await prisma.admin.findUnique({
-        //     where: { admin_number: 38373 }
-        // })
+        if (!hasLetter(pass_phrase)) {
+            const macth_admin = await prisma.admin.findMany({
+                where: { admin_number: Number(pass_phrase) }
+            });
+
+            admin = macth_admin[0];
+        }
+        if (hasLetter(pass_phrase)) {
+            admin = await prisma.admin.findUnique({
+                where: { email: pass_phrase }
+            });
+
+        }
 
         if (!admin) res.status(404).json({ msg: 'Account not found. Enter the right email', code: 404 });
 
-        const password_is_correct = await bcrypt.compare(password, admin.password);
+        const password_is_correct = admin.password == password;
+        res.json({ admin, password_is_correct })
+        // await bcrypt.compare(password, admin.password);
 
         if (admin && password_is_correct) {
             const token = jwt.sign({ userId: admin.id }, process.env.JWT_SECRET, { expiresIn: '30d' });
@@ -76,11 +98,11 @@ const signin = esh(async (req, res) => {
             one_month_from_now.setMonth(one_month_from_now.getMonth() + 1);
 
             res.cookie("token", token, {
-                httpOnly: process.env.MODE == 'DEVELOPMENT' ? true : false,
-                maxAge: 30 * 24 * 60 * 60 * 1000,
-                secure: process.env.MODE == 'DEVELOPMENT' ? true : false,
-                sameSite: process.env.MODE == 'DEVELOPMENT' ? 'none' : 'strict',
-                path: '/'
+                httpOnly,
+                maxAge: remember_me ? 30 * 24 * 60 * 60 * 1000 : 60 * 1000,
+                secure,
+                sameSite,
+                path
             });
 
             send_mail({
@@ -120,11 +142,11 @@ const signout = esh(async (req, res) => {
                 if (admin) {
                     // Clear the token cookie
                     res.cookie("token", '', {
-                        hhttpOnly: process.env.MODE == 'DEVELOPMENT' ? true : false,
+                        httpOnly,
                         maxAge: 30 * 24 * 60 * 60 * 1000,
-                        secure: process.env.MODE == 'DEVELOPMENT' ? true : false,
-                        sameSite: process.env.MODE == 'DEVELOPMENT' ? 'none' : 'strict',
-                        path: '/'
+                        secure,
+                        sameSite,
+                        path
                     });
 
                     // Send an email to the user

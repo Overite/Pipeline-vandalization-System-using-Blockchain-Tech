@@ -30,5 +30,5 @@ app.use(`${API_URL}/dashboard/pipe_lines`, pipe_line_route);
 app.use(`${API_URL}/dashboard/me`, admin_route);
 
 app.listen(PORT, async () => {
-    console.log(`SERVER_URL: ${PORT}`);
+    console.log(`SERVER_URL: ${PORT}`, { MODE: process.env.MODE == 'DEVELOPMENT' });
 });

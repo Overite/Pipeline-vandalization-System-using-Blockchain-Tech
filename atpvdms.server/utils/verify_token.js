@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 const verify_token = (req, res, fnToRun) => {
     const token = req?.cookies?.token;
 
+    console.log({ token })
+
     if (!token || token === '') {
         return res.status(401).json({ msg: 'Unauthorized. Signin required!', code: 401 });
     }

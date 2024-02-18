@@ -72,6 +72,10 @@ model admin {
   active            Boolean?    @default(true)
   role              admin_role?
   admin_number      Int
+  region            String      @db.VarChar(255)
+  img               Bytes
+  bio               String      @db.Text
+  language          String      @db.VarChar(100)
 }
 
 model pipe_line2137 {
