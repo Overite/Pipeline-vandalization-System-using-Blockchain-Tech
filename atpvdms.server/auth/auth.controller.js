@@ -10,7 +10,6 @@ const sameSite = process.env.MODE == 'DEVELOPMENT' ? 'strict' : 'none';
 const path = '/';
 
 
-
 const signup = esh(async (req, res) => {
     const { password, full_name, email } = req.body;
 
@@ -26,20 +25,24 @@ const signup = esh(async (req, res) => {
         if (user_name_taken) {
             res.status(400).json({ msg: "This user name is taken. Pick another user name", code: 400 });
         }
+
         if (!admin_exist && !user_name_taken) {
             const assigned_admin_number = Math.floor(Math.random() * 90000) + 10000;
-            const hashed_password = await bcrypt.hash(password, Number(process.env.BYCRYPT_HASH_NUMBER));
+            // const hashed_password = await bcrypt.hash(password, Number(process.env.BYCRYPT_HASH_NUMBER));
 
             const new_admin = await prisma.admin.create({
                 data: {
+                    admin_number: Number(assigned_admin_number),
+                    bio: '',
+                    img: '',
+                    language: '',
+                    region: '',
+                    active: false,
                     email,
                     full_name,
-                    // password: hashed_password,
                     password,
-                    active: false,
                     role: 'ADMIN',
-                    user_name: full_name,
-                    admin_number: Number(assigned_admin_number)
+                    user_name: full_name
                 },
             });
 
@@ -89,7 +92,7 @@ const signin = esh(async (req, res) => {
         if (!admin) res.status(404).json({ msg: 'Account not found. Enter the right email', code: 404 });
 
         const password_is_correct = admin.password == password;
-        res.json({ admin, password_is_correct })
+
         // await bcrypt.compare(password, admin.password);
 
         if (admin && password_is_correct) {
@@ -99,7 +102,8 @@ const signin = esh(async (req, res) => {
 
             res.cookie("token", token, {
                 httpOnly,
-                maxAge: remember_me ? 30 * 24 * 60 * 60 * 1000 : 60 * 1000,
+                // maxAge: remember_me == 'true' || remember_me == true ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000,
+                maxAge: 30 * 24 * 60 * 60 * 1000,
                 secure,
                 sameSite,
                 path
@@ -107,7 +111,7 @@ const signin = esh(async (req, res) => {
 
             send_mail({
                 mail_options: {
-                    to: email,
+                    to: admin?.email,
                     subject: 'Account signin',
                     text: `Dear ${admin.full_name},\n\nSuccessfully signed in. \n\nRegards,\niDocRequest Team`
                 }

@@ -71,7 +71,7 @@ model admin {
   last_login        DateTime?   @db.Timestamp(0)
   active            Boolean?    @default(true)
   role              admin_role?
-  admin_number      Int
+  admin_number      String      @db.VarChar(5)
   region            String      @db.VarChar(255)
   img               Bytes
   bio               String      @db.Text
@@ -87,6 +87,15 @@ model pipe_line2137 {
   flowrate  String   @db.VarChar(255)
   vibration String   @db.VarChar(255)
   timestamp DateTime @default(now()) @db.Timestamp(0)
+}
+
+model blockchain {
+  id              Int      @id @default(autoincrement())
+  timestamp       DateTime @default(now()) @db.Timestamp(0)
+  log             String   @db.VarChar(255)
+  gas_fee         String   @db.VarChar(100)
+  transaction_fee String   @db.VarChar(100)
+  block           String   @db.VarChar(50)
 }
 
 enum admin_role {
