@@ -14,17 +14,20 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT;
-const API_URL = process.env.API_URL;
+const API_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_SERVER_URL : process.env.API_URL;
+const CLIENT_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_CLIENT_URL : process.env.LOCAL_CLIENT_URL;
 
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: CLIENT_URL,
     credentials: true,
 }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(`${API_URL}/auth`, auth_route);
+
+app.get('/', (req, res) => res.json({ msg: `Server running on { SERVER_URL }: ${API_URL} { CLIENT_URL }: ${CLIENT_URL}` }))
 
 app.use(`${API_URL}/dashboard/tankers`, tanker_route);
 app.use(`${API_URL}/dashboard/pipe_lines`, pipe_line_route);
