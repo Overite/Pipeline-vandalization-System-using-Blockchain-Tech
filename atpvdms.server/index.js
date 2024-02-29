@@ -15,11 +15,12 @@ const app = express();
 
 const PORT = process.env.PORT;
 const API_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_SERVER_URL : process.env.API_URL;
-const CLIENT_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_CLIENT_URL : process.env.LOCAL_CLIENT_URL;
+// const CLIENT_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_CLIENT_URL : process.env.LOCAL_CLIENT_URL;
+const CLIENT_URL = 'https://pipeline-vandalization-system-using-blockchain-tech-zeta.vercel.app';
 
 app.use(express.json());
 app.use(cors({
-    origin: CLIENT_URL,
+    origin: 'https://pipeline-vandalization-system-using-blockchain-tech-zeta.vercel.app',
     credentials: true,
 }));
 app.use(cookieParser());
@@ -35,5 +36,5 @@ app.use(`${API_URL}/dashboard/me`, admin_route);
 app.use(`${API_URL}/dashboard/blockchain/transactions`, blockchain_route);
 
 app.listen(PORT, async () => {
-    console.log(`SERVER_URL: ${PORT}`, { MODE: process.env.MODE == 'DEVELOPMENT' });
+    console.log(`SERVER_URL: ${PORT}`, { MODE: 'dev '+ process.env.MODE == 'DEVELOPMENT' });
 });
