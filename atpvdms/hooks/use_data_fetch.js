@@ -34,7 +34,7 @@ function UseDataFetch({ children }) {
 
         const code = profile_data?.code || profile_error?.data?.code;
 
-        if (code == 401 || code == '401') router.replace('/login');
+        // if (code == 401 || code == '401') router.replace('/login');
 
         if (admin) dispatch(set_admin(admin))
     }, [getting_profile, profile_data, profile_error, token])
