@@ -14,7 +14,8 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT;
-const API_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_SERVER_URL : process.env.API_URL;
+// const API_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_SERVER_URL : process.env.API_URL;
+const API_URL = 'https://pipeline-vandalization-system-using.onrender.com/api';
 // const CLIENT_URL = process.env.MODE == 'PRODUCTION' ? process.env.DEPLOYED_CLIENT_URL : process.env.LOCAL_CLIENT_URL;
 const CLIENT_URL = 'https://pipeline-vandalization-system-using-blockchain-tech-zeta.vercel.app';
 
@@ -28,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(`${API_URL}/auth`, auth_route);
 
-app.get('/', (req, res) => res.json({ msg: `Server running on { SERVER_URL }: ${API_URL} { CLIENT_URL }: ${CLIENT_URL}` }))
+app.get('/', (req, res) => res.json({ msg: `Server running on { SERVER_URL }: ${API_URL} { CLIENT_URL }: ${CLIENT_URL} { MODE: 'dev '+ process.env.MODE == 'DEVELOPMENT' } {API_URL}: ${API_URL}` }))
 
 app.use(`${API_URL}/dashboard/tankers`, tanker_route);
 app.use(`${API_URL}/dashboard/pipe_lines`, pipe_line_route);
