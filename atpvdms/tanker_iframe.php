@@ -47,7 +47,7 @@
         L.tileLayer('https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=41c719f6f946478cb9ef1b267e7a6e09', {
             attribution: 'Map data &copy; <a href="https://www.thunderforest.com/">Thunderforest</a>',
             maxZoom: 17,
-            apikey: 'YOUR_API_KEY' // Replace with your Thunderforest API key
+            apikey: '41c719f6f946478cb9ef1b267e7a6e09' // Replace with your Thunderforest API key
         }).addTo(map);
 
         // Function to load map data
